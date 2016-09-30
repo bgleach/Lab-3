@@ -56,7 +56,7 @@ public class Hand {
 	static Hand EvaluateHand(Hand h) throws Exception {
 
 		Collections.sort(h.getCardsInHand());
-
+		//for(Card c: h.getCardsInHand()){System.out.println(c.geteRank());}
 		if (h.getCardsInHand().size() != 5) { throw new
 			HandException(h,eHand.ShortHand); }
 
@@ -117,7 +117,31 @@ public class Hand {
 
 	private static ArrayList<Hand> ExplodeHands(ArrayList<Hand> Hands) {
 		// TODO - Lab3 Implement this
-		return null;
+		Hand firstHand = Hands.get(0);
+		Hand tempHand = new Hand();
+		int i = 0;
+		for (Card c : firstHand.CardsInHand) {
+			if (c.geteRank() != eRank.JOKER && ! c.isbWild()) {
+				tempHand.AddToCardsInHand(c);
+			}	
+			else{
+				i++;
+				tempHand.AddToCardsInHand(new Card(eSuit.JOKER,eRank.JOKER,99)); 
+			}
+		}
+		if (i == 0){
+			return Hands;
+		}
+		Collections.sort(tempHand.getCardsInHand());
+		while (tempHand.){
+		// just need to write the code to replace every joker with every possible card and create every possible hand 
+		}
+		return Hands;
+	}
+	
+	private static ArrayList<Hand> explodeHelp(Hand h){
+		ArrayList<Hand> Hands = new ArrayList<Hand>(); 
+		return Hands;
 	}
 	
 	public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand {
